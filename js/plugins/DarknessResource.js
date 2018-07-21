@@ -70,7 +70,9 @@ var DkR = DkR || {};
 // DataManager
 //-----------------------------------------------------------------------------
 
-DkR.Liara = null;
+DkR.Liara = function() {
+    return $gameActors.actor(DkR.LiaraID);
+};
 
 let notetagsLoaded = false;
 const _DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
@@ -95,9 +97,6 @@ var loadNotetags = function() {
             if (actor.meta.StartingDp) {
                 actor.Dp = Number(actor.meta.StartingDp);
             }
-            if (actor.name == "Liara") {
-                DkR.Liara = actor;
-            }
         }
     }
     for(var i = 0; i < $dataSkills.length; i++) {
@@ -121,6 +120,9 @@ Game_Actor.prototype.setup = function(actorId) {
     var actor = $dataActors[actorId];
     this.Dp = actor.Dp;
     this.MaxDp = actor.MaxDp;
+    if (actor.name == "Liara") {
+        DkR.LiaraID = actorId;
+    }
 };
 
 //-----------------------------------------------------------------------------
@@ -241,5 +243,25 @@ Window_SkillList.prototype.drawOtherCost = function(skill, wx, wy, dw) {
     return returnWidth;
 };
 
+//-----------------------------------------------------------------------------
+// Plugins commands
+//-----------------------------------------------------------------------------
+
+DkR.pluginCommands = DkR.pluginCommands || {};
+
+DkR.pluginCommands.DecreaseDP = function(command, args) {
+    let DpAmount = Math.round(Number(eval(args[0])));
+    DkR.Liara().Dp -= DpAmount;
+};
+
+DkR.Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
+Game_Interpreter.prototype.pluginCommand = function(command, args) {
+    DkR.Game_Interpreter_pluginCommand.call(this, command, args);
+    switch(command) {
+        case "DecreaseDP":
+        DkR.pluginCommands.DecreaseDP(command, args);
+        break;
+    }
+};
 
 })();
