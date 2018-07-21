@@ -70,6 +70,8 @@ var DkR = DkR || {};
 // DataManager
 //-----------------------------------------------------------------------------
 
+DkR.Liara = null;
+
 let notetagsLoaded = false;
 const _DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
 DataManager.isDatabaseLoaded = function() {
@@ -92,6 +94,9 @@ var loadNotetags = function() {
             }
             if (actor.meta.StartingDp) {
                 actor.Dp = Number(actor.meta.StartingDp);
+            }
+            if (actor.name == "Liara") {
+                DkR.Liara = actor;
             }
         }
     }
