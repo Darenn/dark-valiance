@@ -1,6 +1,7 @@
 [
 null,
 {"id":1,"expanded":true,"name":"Debug","order":1,"parentId":0,"scrollX":728,"scrollY":409.77777777777777},
-{"id":2,"expanded":false,"name":"Castle 1F","order":2,"parentId":0,"scrollX":994.8,"scrollY":944.4},
-{"id":3,"expanded":false,"name":"Castle","order":3,"parentId":0,"scrollX":1081.2,"scrollY":992.4}
+null,
+{"id":3,"expanded":true,"name":"Castle","order":2,"parentId":0,"scrollX":832,"scrollY":640},
+{"id":4,"expanded":false,"name":"Keep","order":3,"parentId":3,"scrollX":728,"scrollY":409.77777777777777}
 ]

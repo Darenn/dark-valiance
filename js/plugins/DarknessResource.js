@@ -76,7 +76,6 @@ DataManager.isDatabaseLoaded = function() {
     if(!_DataManager_isDatabaseLoaded.apply(this, arguments)) return false;
     if(!notetagsLoaded) {
         loadNotetags();
-        alert("Tags loaded");
         notetagsLoaded = true;
     }
     return true;
@@ -89,7 +88,10 @@ var loadNotetags = function() {
             actor.Dp = 0;
             actor.MaxDp = 0; 
             if (actor.meta.MaxDp) {               
-                actor.MaxDp = parseInt(actor.meta.MaxDp);
+                actor.MaxDp = Number(actor.meta.MaxDp);
+            }
+            if (actor.meta.StartingDp) {
+                actor.Dp = Number(actor.meta.StartingDp);
             }
         }
     }
@@ -97,8 +99,12 @@ var loadNotetags = function() {
         let skill = $dataSkills[i];
         if (skill) {
             skill.DpGain = 0;
+            skill.DpCost = 0;
             if (skill.meta.DpGain) {
-                skill.DpGain = parseInt(skill.meta.DpGain);
+                skill.DpGain = Number(skill.meta.DpGain);
+            }
+            if (skill.meta.DpCost) {
+                skill.DpCost = Number(skill.meta.DpCost);
             }
         }
     }
@@ -125,6 +131,17 @@ Game_BattlerBase.prototype.paySkillCost = function(skill) {
 Game_BattlerBase.prototype.gainSkillDpGain = function(skill) {
     this.Dp += skill.DpGain;
 }
+
+Game_BattlerBase.prototype.hasEnoughDP = function(skill) {
+    return this.Dp >= skill.DpCost;
+}
+
+DkR.Game_BattlerBase_canPaySkillCost =
+    Game_BattlerBase.prototype.canPaySkillCost;
+Game_BattlerBase.prototype.canPaySkillCost = function(skill) {
+    if (this.MaxDp > 0 && !this.hasEnoughDP(skill)) return false;
+    return DkR.Game_BattlerBase_canPaySkillCost.call(this, skill);
+};
 
 //-----------------------------------------------------------------------------
 // Window
@@ -202,7 +219,7 @@ Window_BattleStatus.prototype.drawGaugeArea = function(rect, actor) {
 var _Window_SkillList_drawOtherCost = Window_SkillList.prototype.drawOtherCost;
 Window_SkillList.prototype.drawOtherCost = function(skill, wx, wy, dw) {
     dw = _Window_SkillList_drawOtherCost.call(this, skill, wx, wy, dw);
-    if (skill.DpGain <= 0) return dw;
+    if (skill.DpCost <= 0) return dw;
     if (DkR.DpIcon > 0) {
       var iw = wx + dw - Window_Base._iconWidth;
       this.drawIcon(DkR.DpIcon, iw, wy + 2);
@@ -210,7 +227,7 @@ Window_SkillList.prototype.drawOtherCost = function(skill, wx, wy, dw) {
     }
     this.changeTextColor(this.textColor(DkR.DpTextColor));
     var fmt = DkR.DpFormat;
-    var text = fmt.format(Yanfly.Util.toGroup(skill.DpGain),
+    var text = fmt.format(Yanfly.Util.toGroup(skill.DpCost),
       TextManager.dpA);
     this.contents.fontSize = DkR.DpFontSize;
     this.drawText(text, wx, wy, dw, 'right');
@@ -219,6 +236,5 @@ Window_SkillList.prototype.drawOtherCost = function(skill, wx, wy, dw) {
     return returnWidth;
 };
 
-alert("executed");
 
 })();
