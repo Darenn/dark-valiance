@@ -28,6 +28,8 @@ var $plugins =
 {"name":"YEP_X_PassiveAuras","status":true,"description":"v1.05 (Requires YEP_AutoPassiveStates.js) Add aura effects\nto various database objects.","parameters":{}},
 {"name":"YEP_X_ExtDoT","status":true,"description":"v1.03 (Req YEP_BattleEngineCore & YEP_BuffsStatesCore)\nCreate custom DoT formulas and effects with ease.","parameters":{"---Defaults---":"","Regen Animation":"46","DoT Animation":"59","Default Variance":"20","Default Element":"0"}},
 {"name":"YEP_X_VisualHpGauge","status":true,"description":"v1.07 (Requires YEP_BattleEngineCore.js) Reveal HP Gauges\nwhen a battler is selected or takes damage in battle.","parameters":{"---General---":"","Display Actor":"true","Defeat First":"false","Always Visible":"false","---Appearance---":"","Minimum Gauge Width":"144","Gauge Height":"18","Back Color":"19","HP Color 1":"20","HP Color 2":"21","Gauge Duration":"30","Gauge Position":"false","Y Buffer":"-16","Use Thick Gauges":"true","---Text Display---":"","Show HP":"false","Show Value":"false","Show Max":"false"}},
+{"name":"---------------- Other Plugins ----------------","status":false,"description":"","parameters":{}},
+{"name":"EST_RegionMapLoader","status":true,"description":"This plugin is the MANAGER to swap event with building / decorations based on item.\r\n<EST_REGIONMAPLOADER>","parameters":{"DefaultUpdatingRegionMapTransition":"0"}},
 {"name":"---------------- My Plugins ----------------","status":false,"description":"","parameters":{}},
 {"name":"DarknessResource","status":true,"description":"Add the darkness resource to actors","parameters":{"DP Icon":"302","DP Format":"%1%2","DP Font Size":"20","DP Text Color":"30"}}
 ];
