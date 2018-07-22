@@ -1,7 +1,7 @@
 [
 null,
 {"id":1,"battlerName":"Liara","characterIndex":0,"characterName":"Liara","classId":1,"equips":[5,0,2,5,0],"faceIndex":0,"faceName":"Liara","traits":[{"code":14,"dataId":11,"value":1}],"initialLevel":1,"maxLevel":99,"name":"Liara","nickname":"","note":"<MaxDp: 100>\n<StartingDp: 5>\n<Passive State: 12>","profile":""},
-{"id":2,"battlerName":"Eir","characterIndex":0,"characterName":"Eir","classId":2,"equips":[2,1,2,3,0],"faceIndex":0,"faceName":"Eir","traits":[],"initialLevel":1,"maxLevel":99,"name":"Eir","nickname":"","note":"","profile":""},
-{"id":3,"battlerName":"Olaf","characterIndex":0,"characterName":"Olaf","classId":3,"equips":[3,0,2,3,4],"faceIndex":0,"faceName":"Olaf","traits":[],"initialLevel":1,"maxLevel":99,"name":"Olaf","nickname":"","note":"","profile":""},
-{"id":4,"battlerName":"Siegfried","characterIndex":0,"characterName":"Siegfried","classId":4,"equips":[4,0,2,3,4],"faceIndex":0,"faceName":"Siegfried","traits":[],"initialLevel":1,"maxLevel":99,"name":"Siegfried","nickname":"","note":"","profile":""}
+{"id":2,"battlerName":"Eir","characterIndex":0,"characterName":"Eir","classId":2,"equips":[2,1,2,3,0],"faceIndex":0,"faceName":"Eir","traits":[{"code":14,"dataId":14,"value":1}],"initialLevel":1,"maxLevel":99,"name":"Eir","nickname":"","note":"","profile":""},
+{"id":3,"battlerName":"Olaf","characterIndex":0,"characterName":"Olaf","classId":3,"equips":[3,0,2,3,4],"faceIndex":0,"faceName":"Olaf","traits":[{"code":14,"dataId":14,"value":1}],"initialLevel":1,"maxLevel":99,"name":"Olaf","nickname":"","note":"","profile":""},
+{"id":4,"battlerName":"Siegfried","characterIndex":0,"characterName":"Siegfried","classId":4,"equips":[4,0,2,3,4],"faceIndex":0,"faceName":"Siegfried","traits":[{"code":14,"dataId":14,"value":1}],"initialLevel":1,"maxLevel":99,"name":"Siegfried","nickname":"","note":"","profile":""}
 ]

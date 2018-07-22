@@ -136,7 +136,11 @@ Game_BattlerBase.prototype.paySkillCost = function(skill) {
 };
 
 Game_BattlerBase.prototype.gainSkillDpGain = function(skill) {
-    this.Dp += skill.DpGain;
+    if (this.isStateAffected(14)) {
+        this.Dp += Math.round(skill.DpGain / 2); // TODO use a notetag
+    } else {
+        this.Dp += skill.DpGain;
+    }
 }
 
 Game_BattlerBase.prototype.hasEnoughDP = function(skill) {
