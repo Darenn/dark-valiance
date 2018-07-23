@@ -125,6 +125,9 @@ Game_Actor.prototype.setup = function(actorId) {
     }
 };
 
+
+
+
 //-----------------------------------------------------------------------------
 // Game_Battler
 //-----------------------------------------------------------------------------
@@ -137,7 +140,7 @@ Game_BattlerBase.prototype.paySkillCost = function(skill) {
 
 Game_BattlerBase.prototype.gainSkillDpGain = function(skill) {
     if (this.isStateAffected(14)) {
-        this.Dp += Math.round(skill.DpGain / 2); // TODO use a notetag
+        this.Dp += Math.round(skill.DpGain / 2); // TODO use a notetag (dark repulsion)
     } else {
         this.Dp += skill.DpGain;
     }
@@ -192,7 +195,7 @@ Window_Base.prototype.drawActorSimpleStatus = function(actor, x, y, width) {
 Window_BattleStatus.prototype.drawGaugeAreaWithTp = function(rect, actor) {
     this.drawActorHp(actor, rect.x + 0, rect.y, 108);
     if (actor.MaxDp > 0) {
-        this.drawActorDp(actor, rect.x + 123, rect.y, 96);
+        this.drawActorDp(actor, rect.x + 123, rect.y, 96); 
     }
     else {
         this.drawActorMp(actor, rect.x + 123, rect.y, 96);
@@ -258,12 +261,30 @@ DkR.pluginCommands.DecreaseDP = function(command, args) {
     DkR.Liara().Dp -= DpAmount;
 };
 
+DkR.pluginCommands.SuccubusIncreaseDP = function(command, args) {
+    if (DkR.Liara().Dp > 0) {
+        DkR.pluginCommands.IncreaseDP(command, args);
+    }
+};
+
+DkR.pluginCommands.IncreaseDP = function(command, args) {
+    let DpAmount = Math.round(Number(eval(args[0])));
+    if (DkR.Liara().isStateAffected(14)) {
+        DpAmount /= 2; // TODO use a notetag (dark repulsion)
+    }
+    DkR.Liara().Dp += Math.round(DpAmount);
+    if (DkR.Liara().Dp > 100) DkR.Liara().Dp = 100;
+};
+
 DkR.Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
 Game_Interpreter.prototype.pluginCommand = function(command, args) {
     DkR.Game_Interpreter_pluginCommand.call(this, command, args);
     switch(command) {
         case "DecreaseDP":
         DkR.pluginCommands.DecreaseDP(command, args);
+        break;
+        case "IncreaseDP":
+        DkR.pluginCommands.IncreaseDP(command, args);
         break;
     }
 };
