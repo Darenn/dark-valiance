@@ -286,6 +286,9 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
         case "IncreaseDP":
         DkR.pluginCommands.IncreaseDP(command, args);
         break;
+        case "SuccubusIncreaseDP":
+        DkR.pluginCommands.SuccubusIncreaseDP(command, args);
+        break;
     }
 };
 
