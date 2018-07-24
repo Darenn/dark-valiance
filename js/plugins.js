@@ -36,5 +36,6 @@ var $plugins =
 {"name":"---------------- Other Plugins ----------------","status":false,"description":"","parameters":{}},
 {"name":"EST_RegionMapLoader","status":true,"description":"This plugin is the MANAGER to swap event with building / decorations based on item.\r\n<EST_REGIONMAPLOADER>","parameters":{"DefaultUpdatingRegionMapTransition":"0"}},
 {"name":"---------------- My Plugins ----------------","status":false,"description":"","parameters":{}},
-{"name":"DarknessResource","status":true,"description":"Add the darkness resource to actors","parameters":{"DP Icon":"302","DP Format":"%1%2","DP Font Size":"20","DP Text Color":"30"}}
+{"name":"DarknessResource","status":true,"description":"Add the darkness resource to actors","parameters":{"DP Icon":"302","DP Format":"%1%2","DP Font Size":"20","DP Text Color":"30"}},
+{"name":"HIME_PreTitleEvents","status":false,"description":"Build your own sequence of events that should occur before\r\nthe title screen begins","parameters":{"Pre-Title Map ID":"8","Use As Title":"true"}}
 ];
