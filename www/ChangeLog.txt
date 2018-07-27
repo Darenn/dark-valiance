@@ -1,0 +1,20 @@
+Dark Valiance ChangeLog
+
+v0.2.1 current
+Added:
+	- French translations
+Fixed:
+	- Liara can now become a demon directly after a battle.
+	- When saving after gaining DP with the captain, if you reload this save, you won't suffer from loosing party members.
+
+v0.2 07/25/2018
+Added:
+	- Important missing dialogues.
+Fixed:
+	- Lot of things.
+
+v0.1 07/23/2018 RPG Maker jam #3
+	First deployment.
+
+
+
