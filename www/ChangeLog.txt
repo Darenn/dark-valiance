@@ -1,6 +1,6 @@
 Dark Valiance ChangeLog
 
-v0.2.1 current
+v0.3 07/27/2018
 Added:
 	- French translations
 Fixed:
